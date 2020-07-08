@@ -290,6 +290,16 @@ if __name__ == "__main__":
 
     games["genre"] = games["genre"].str.replace("+", " ")
 
+    # In exploring the data, I noticed there were a few dates being used
+    # as placeholders. For the longevity of this code, I will not exclude
+    # 12/31/2020 and 12/31/2021, but any user using this code before these dates
+    # should be careful to not rely on them, and explore to see if they are
+    # still being used as placeholders. However, 1/1/1970 is used as a
+    # placeholder, and is the only date to show up in 1970, thus I can replace
+    # these dates with a nan value while keeping our mind at ease.
+
+    games.loc[games["release_date"].dt.year == 1970, "release_date"] = np.nan 
+
     # Finally, let's reorder the columns in a way that makes the most sense.
 
     games = games[["img", "title", "console", "genre", "publisher", "developer", "vg_score", "critic_score", "user_score", "total_shipped", "total_sales", "na_sales", "jp_sales", "pal_sales", "other_sales", "release_date", "last_update"]]
