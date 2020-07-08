@@ -10,4 +10,11 @@ https://www.digitalocean.com/community/tutorials/how-to-crawl-a-web-page-with-sc
 https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 
 
-There are certainly many improvements that could be made to this project. Per the above, each game could be looked at individually in order to get the absolute maximum information about each title rather than in the tableview of the website; this would inevitably result in a longer processing period. I'm also think that multi-threading and proxies could speed up the process. The way that it selects the genre parameter may also be somewhat messy--it may not be sustainable since the available genres may change throughout the years. 
+There are certainly many improvements that could be made to this project. Per the above, each game could be looked at individually in order to get the absolute maximum information about each title rather than in the tableview of the website; this would inevitably result in a longer processing period. I'm also think that multi-threading and proxies could speed up the process. The way that it selects the genre parameter may also be somewhat messy--it may not be sustainable since the available genres may change throughout the years.
+
+IMPORTANT: Please note that vgchartz.com sometimes uses impossible placeholder dates as the release dates for certain titles--not neccesarily titles in the future that they don't
+have the release date for yet, but oddly enough for titles from the past for which they have not collected the correct release date. I have ameliorated this issue by replacing all 
+date values for titles that were supposedly released in 1970 with nan values, as they all seemed to be false. However, I did not do this for 12/31/2020 and 12/31/2021 which also
+seemed to be false release dates. I made this sacrifice for the sake of longevity. If you are using this code in 2021, there very well may have been titles released on 12/31/2020,
+Generally though, if you are using this data set and plan to incorporate release date in your analysis, be wary of these false dates which tend to fall on the extremes of the
+future calendar and 1970.
