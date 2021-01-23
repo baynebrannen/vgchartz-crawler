@@ -171,6 +171,7 @@ class VGSpider(scrapy.Spider):
                 response.urljoin(next_page),
                 callback=self.parse
                 )
+            time.sleep(3)
             page += 1
 
 # Here we finally simply create the process and set the spider we've created to crawl away
